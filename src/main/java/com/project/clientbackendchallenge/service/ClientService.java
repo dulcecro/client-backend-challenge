@@ -17,8 +17,8 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public Client listClientsByCodigo(String codigoUnico) {
-        return clientRepository.findByCodigoUnico(codigoUnico).
-                orElseThrow(() -> new RuntimeException("The client with code: " + codigoUnico + " doesn't exist"));
+    public Client listClientsByCode(String uniqueCode) {
+        return clientRepository.findByUniqueCode(uniqueCode).
+                orElseThrow(() -> new RuntimeException("The client with code: " + uniqueCode + " doesn't exist"));
     }
 }

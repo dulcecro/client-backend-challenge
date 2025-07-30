@@ -23,8 +23,8 @@ public class ClientController {
         return clientService.listClients();
     }
 
-    @GetMapping("/client/{codigoUnico}")
-    public ResponseEntity<Client> listClientByCodigo(@PathVariable String codigoUnico){
-        return ResponseEntity.ok(clientService.listClientsByCodigo(codigoUnico));
+    @GetMapping("/client/{uniqueCode}")
+    public ResponseEntity<Client> listClientByCodigo(@PathVariable String uniqueCode){
+        return ResponseEntity.ok(clientService.listClientsByCode(uniqueCode));
     }
 }

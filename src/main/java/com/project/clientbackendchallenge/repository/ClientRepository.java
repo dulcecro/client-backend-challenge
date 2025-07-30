@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
-    Optional<Client> findByCodigoUnico(String codigoUnico);
+    Optional<Client> findByUniqueCode(String uniqueCode);
 }
