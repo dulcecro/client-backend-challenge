@@ -3,6 +3,7 @@ package com.project.clientbackendchallenge.controller;
 import com.project.clientbackendchallenge.model.FinancialProduct;
 import com.project.clientbackendchallenge.service.FinancialProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class FinancialProductController {
     }
 
     @GetMapping("/financialProduct/{uniqueCodeClient}")
-    public List<FinancialProduct> listFinancialProductsByUniqueCode(@PathVariable String uniqueCodeClient) {
-        return financialProductService.listFinancialProductsByUniqueCode(uniqueCodeClient);
+    public ResponseEntity<List<FinancialProduct>> listFinancialProductsByUniqueCode(@PathVariable String uniqueCodeClient) {
+        return ResponseEntity.ok(financialProductService.listFinancialProductsByUniqueCode(uniqueCodeClient));
     }
 }
