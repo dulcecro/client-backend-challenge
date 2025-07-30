@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class ClientService {
     @Autowired
@@ -14,5 +15,10 @@ public class ClientService {
 
     public List<Client> listClients() {
         return clientRepository.findAll();
+    }
+
+    public Client listClientsByCodigo(String codigoUnico) {
+        return clientRepository.findByCodigoUnico(codigoUnico).
+                orElseThrow(() -> new RuntimeException("The client with code: " + codigoUnico + " doesn't exist"));
     }
 }
