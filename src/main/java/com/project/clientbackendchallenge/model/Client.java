@@ -30,6 +30,10 @@ public class Client {
     @Column(name = "number_document")
     private String numberDocument;
 
+    private String email;
+    private String phone;
+    private String address;
+
 //    @OneToMany(mappedBy = "idClient", cascade = CascadeType.ALL)
 //    private List<FinancialProduct> listFinancialProduct;
 }
