@@ -1,8 +1,7 @@
 package com.project.clientbackendchallenge.controller;
 
-import com.project.clientbackendchallenge.model.FinancialProduct;
+import com.project.clientbackendchallenge.DTO.FinancialProductDTO;
 import com.project.clientbackendchallenge.service.FinancialProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,18 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/challenge")
+@RequestMapping("/api")
 public class FinancialProductController {
-    @Autowired
     private FinancialProductService financialProductService;
 
-    @GetMapping("/financialProduct")
-    public List<FinancialProduct> listFinancialProducts() {
-        return financialProductService.listFinancialProducts();
+    public FinancialProductController(FinancialProductService financialProductService) {
+        this.financialProductService = financialProductService;
     }
 
     @GetMapping("/financialProduct/{uniqueCodeClient}")
-    public ResponseEntity<List<FinancialProduct>> listFinancialProductsByUniqueCode(@PathVariable String uniqueCodeClient) {
-        return ResponseEntity.ok(financialProductService.listFinancialProductsByUniqueCode(uniqueCodeClient));
+    public ResponseEntity<List<FinancialProductDTO>> listFinancialProductsByUniqueCode (@PathVariable String uniqueCodeClient){
+        return ResponseEntity.ok(financialProductService.getFinancialProductByUniqueCode(uniqueCodeClient));
     }
 }

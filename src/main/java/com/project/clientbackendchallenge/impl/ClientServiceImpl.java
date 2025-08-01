@@ -1,4 +1,4 @@
-package com.project.clientbackendchallenge.serviceImpl;
+package com.project.clientbackendchallenge.impl;
 
 import com.project.clientbackendchallenge.DTO.ClientDTO;
 import com.project.clientbackendchallenge.mapper.ClientMapper;
