@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql-bank:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: db_bank
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-bank-data:/var/lib/mysql
+    networks:
+      - backend
+
+  microservice-bank:
+    build: .
+    depends_on:
+      - mysql-bank
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-bank:3306/db_bank
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8081:8080"
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: bank-service
+    driver: bridge
+
+volumes:
+  mysql-bank-data:
